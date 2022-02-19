@@ -32,7 +32,7 @@ int main()
 
     
     colleges();
-    //getDetails();
+    getDetails();
     
     return 0;
 }
