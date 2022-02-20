@@ -6,6 +6,8 @@ void payFee();
 
 int main()
 {   
+    int fee, clgId;
+
     printf("=======================Welcome to College Admission Portal==============================\n");
     printf("(|                                                                                      |)\n");
     printf("(|                                                                                      |)\n");
@@ -33,6 +35,15 @@ int main()
     
     colleges();
     getDetails();
+    printf("Enter the college id you want to apply for\n");
+    scanf("%d", &clgId);
+    while(clgId==0)
+    {
+        printf("correct input");
+        break;
+    }
+    
+    printf("");
     
     return 0;
 }
@@ -40,7 +51,7 @@ int main()
 
 
 void colleges()
-{
+{   
     char arr[11][30]= {"1 BVRIT","2 CMR",
                 "3 Gokaraju Rangaraju ","4 IIIT ","5 MLR ",
                 "6 MGIT",
@@ -68,14 +79,14 @@ void colleges()
     // printf("Malla Reddy College of Engineering and Technology\n");
     // printf("Muffakham Jah College of Engineering and Technology\n");
     // printf("VNR Vignana Jyothi Institute of Engineering and Technology\n");
-    // pirntf("(KMIT) KESHAV MEMORIAL INSTITUTE OF TECHNOLOGY KESHAV MEMORIAL INSTITUTE OF TECHNOLOGY\n")
+    // printf("(KMIT) KESHAV MEMORIAL INSTITUTE OF TECHNOLOGY KESHAV MEMORIAL INSTITUTE OF TECHNOLOGY\n")
 
 }
 
 
 void getDetails()
 {
-    char str[20], mail[30];
+    char str[20], mail[50];
     int phnum;
 
 
@@ -98,4 +109,9 @@ void getDetails()
 
 
     
+}
+
+void payFee(int a)
+{
+
 }
