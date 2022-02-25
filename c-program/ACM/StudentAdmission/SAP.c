@@ -1,8 +1,9 @@
-#include <stdio.h>
+#include<stdio.h>
+#include<string.h>
 
-void getDetails();
-void colleges();
-void payFee();
+int colleges();
+int payFee();
+int displayFull(int id, char clgname, char name[20], int number[10], char mail[100], int fee);
 
 int main()
 {   
@@ -33,25 +34,92 @@ int main()
     printf("==========================================================================================\n");
 
     
-    colleges();
-    getDetails();
-    printf("Enter the college id you want to apply for\n");
-    scanf("%d", &clgId);
-    while(clgId==0)
+    char str[20], mail[100];
+    int phnum[10];
+
+
+    printf("===================================\n");
+    printf("Enter Your Full Name: ");
+    fgets(str, sizeof(str), stdin);
+    printf("===================================\n");
+    printf("\n");
+    printf("\n");
+    printf("===================================\n");
+    printf("Enter your phone number: ");
+    scanf("%d", &phnum);
+    printf("===================================\n");
+    printf("\n");
+    printf("\n");
+    printf("===================================\n");
+    printf("Enter Your Email: ");
+    scanf("%s", mail);
+    printf("===================================\n");
+    int clg =  colleges();
+    char arr[11][30]= {"1 BVRIT","2 CMR",
+                "3 Gokaraju Rangaraju ","4 IIIT ","5 MLR ",
+                "6 MGIT",
+                "7 Malla Reddy College",
+                "8 Muffakham Jah College",
+                "9 VNR Vignana Jyothi",
+                "10 Anurag University",
+                "11 KMIT"};
+    char clgName = arr[clg-1];
+    fee = payFee();
+
+    if(clg<12)
     {
-        printf("correct input");
-        break;
+        payFee();
+        switch (clg)
+        {
+        case 1:
+            int d = displayFull(clg, clgName, str[20], phnum[10], mail[100], fee);
+            printf("%d", &d);
+            break;
+        
+        default:
+            
+            break;
+        }
     }
-    
-    printf("");
+    else{
+        printf("Please Enter a Valid Id.");
+    }
     
     return 0;
 }
 
+int displayFull(int clgId, char clgName, char name[20], int number[10], char mail[100], int fee)
+{
+    printf("=============================================================================\n");
+    printf("|!|                 College Admission Approval Letter                        \n");
+    printf("=============================================================================\n");
+    printf("|!|                                                                          \n");
+    printf("|!|                                   %s                                     \n", clgName);
+    printf("|!|                                                                          \n");
+    printf("|!|                                                                          \n");
+    printf("|!|          Name: %s                                                        \n", name);
+    printf("|!|                                                                          \n");
+    printf("|!|          Phone Number: %d                                                \n", &number);
+    printf("|!|                                                                          \n");
+    printf("|!|          E-mail: %s                                                      \n", mail);
+    printf("|!|                                                                          \n");
+    printf("|!|                                                                          \n");
+    printf("|!|                                                                          \n");
+    printf("|!|                                                                          \n");
+    printf("|!|                                                                          \n");
+    printf("|!|                                                                          \n");
+    printf("|!|                                                                          \n");
+    printf("|!|                                                                          \n");
+    printf("=============================================================================\n");
+    printf("|!|                                                                          \n");
+    printf("|!|                                                                          \n");
+    printf("=============================================================================\n");
+}
 
-
-void colleges()
+int colleges()
 {   
+    int clgId;
+
     char arr[11][30]= {"1 BVRIT","2 CMR",
                 "3 Gokaraju Rangaraju ","4 IIIT ","5 MLR ",
                 "6 MGIT",
@@ -65,7 +133,17 @@ void colleges()
     {
         printf("||%s\n", arr[i]);
     }
+    
     printf("====================================================\n");
+    printf("\n");
+    printf("\n");
+    printf("====================================================\n");
+    printf("Enter the college id you want to apply for\n");
+    scanf("%d", &clgId);
+    printf("\n%2s", clgId);
+    printf("\n====================================================\n");
+    return clgId ;
+
 
 
 
@@ -84,34 +162,33 @@ void colleges()
 }
 
 
-void getDetails()
+int payFee()
 {
-    char str[20], mail[50];
-    int phnum;
-
-
-    printf("===================================\n");
-    printf("Enter Your Full Name: ");
-    fgets(str, sizeof(str), stdin);
-    printf("===================================\n");
+    int fee, bln;
+    printf("===========================This is a Payment Portal===============================\n");
     printf("\n");
-    printf("\n");
-    printf("===================================\n");
-    printf("Enter your phone number: ");
-    scanf("%d", &phnum);
-    printf("===================================\n");
-    printf("\n");
-    printf("\n");
-    printf("===================================\n");
-    printf("Enter Your Email: ");
-    fgets(mail, sizeof(mail), stdin);
-    printf("===================================\n");
-
-
+    printf("Initially pay 100000 first online and then pay remaining offline after joining your college\n");
     
-}
-
-void payFee(int a)
-{
+    payagain: printf("Please enter the fee amount\n");
+    scanf("%d", &fee);
+    if (fee<50000)
+    {
+        printf("Please pay atleast 50000/- to continue your application\n");
+        goto payagain;
+    }
+    else if(fee>=50000 && fee<=100000){
+        bln = 100000-fee;
+        printf("Please pay the remaining balance offline %d\n", &bln);
+    }
+    else{
+        printf("online payment limit has exceeded, please pay the amount less than 100000\n");
+        goto payagain;
+    }
+    for(int i = 0; i<= 20; i++)
+    {
+        printf("*\n");
+    }
+    printf("Yes! Your payment is successfull.\n");
+    return bln;
 
 }
