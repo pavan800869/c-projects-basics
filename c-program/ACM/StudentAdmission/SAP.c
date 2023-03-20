@@ -37,7 +37,7 @@ int main()
     char str[20], mail[100];
     int phnum[10];
 
-
+    
     printf("===================================\n");
     printf("Enter Your Full Name: ");
     fgets(str, sizeof(str), stdin);
@@ -145,7 +145,7 @@ int colleges()
     return clgId ;
 
 
-
+    printf("Pavan kumar");
 
 
     // printf("BVRIT Hyderabad College of Engineering for Women\n");
